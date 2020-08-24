@@ -1,0 +1,31 @@
+{{!< default}}
+
+<!-- start: #page-404 -->
+<main id="page-404" class="main grid-container">
+
+    <!-- start: .center -->
+    <div class=" mx-auto p-8">
+
+        <article class="w-full">
+            <div class="not-found">
+
+                    <i class="fas fa-exclamation-circle inline-block mr-4 fa-3x"></i>
+
+                    <span class="title ularge text-6xl inline-block"><strong>404</strong></span>
+            </div>
+            <div class="text m-8">
+                <h3 class="text-2xl">{{t "Something's wrong here" }}</h3>
+                <p>{{t "We can't find the page you're looking for." }}</p>
+            </div>
+            <div class="buttons">
+                <a href="{{@site.url}}" class="button dark">{{t "Go back to home" }}</a>
+            </div>
+
+        </article>
+
+        <div class="clear"></div>
+
+    </div>
+    <!-- end: .center -->
+</main>
+<!-- end: #page-404 -->

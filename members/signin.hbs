@@ -1,29 +1,30 @@
 {{!< ../default}}
 {{>main-header}}
-<h2>Welcome back!</h2>
-<p>Sign into your account again for full access</p>
+<h2 class="my-4 text-xl md:text-3xl">Welcome back!</h2>
+<p class="p-1">Sign into your account again for full access</p>
 {{#if @member}}
 
-  {{!-- Logged in: Redirect home --}}
-  <script>window.location = '{{@site.url}}';</script>
+{{!-- Logged in: Redirect home --}}
+<script>window.location = '{{@site.url}}';</script>
 
 {{else}}
 
-<form data-members-form="signin">
-  <input data-members-email type="email" required="true" placeholder="Your email address"/>
-  <button type="submit"><span class="button-text">Send login link</span></button>
-</form>
+<section class="email-optin-widget center-text">
+  <div class="text-xl my-8">Login to {{@site.title}}</div>
 
-<small class="message-success">
-  Great! Check your inbox and click the link to confirm your subscription.
-</small>
+  <form class="my-4 signin-form" data-members-form="signin">
+    <input data-members-email placeholder="Your email address" type="email" required="true"
+      class="w-60 md:w-96 bg-selection rounded-large p-2" />
+    <div class="my-4">
+      <button class="button" type="submit"><i class="fas fa-spinner fa-spin inline-block mr-4"></i><span>Log In</span></button>
 
-<small class="message-error">
-  Please enter a valid email address!
-</small>
+    </div>
+    <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to complete signin</div>
+    <div class="message-error">Please enter a valid email address!</div>
+  </form>
 
-<small data-members-error></small>
+</section>
 
-<p><small>Don't have an account yet? <a href="/signup/">Sign up</a></small></p>
+<p><small>Don't have an account yet? <a class="text-red" href="/signup/">Sign up</a></small></p>
 
 {{/if}}

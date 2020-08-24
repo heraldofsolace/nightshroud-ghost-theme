@@ -1,28 +1,79 @@
-<footer class="site-footer">
+<footer class="site-footer w-60 md:w-160 lg:w-320 p-1 md:p-8 mx-auto mt-48">
 
-  {{#if @site.secondary_navigation}}
-    <nav class="site-footer__navigation" role="navigation">
-      {{navigation type="secondary"}}
-    </nav>
-  {{/if}}
+  <div
+    class="grid {{#if @site.secondary_navigation}} grid-cols-1 lg:grid-cols-3 {{else}} md:grid-cols-2 {{/if}} gaps-4">
+    <div class="recents text-left md:mr-4">
+      <h3 class="text-3xl">{{t "Latest Articles" }}</h3>
+      {{#get "posts" limit="4" as |recent-footer| }}
+      {{#foreach recent-footer}}
+      <article class="{{post_class}} item {{^if feature_image}}no-thumb{{/if}} flex my-4">
 
-  <small class="site-footer__attribution">
+        <div class="mr-4 flex items-center">
+          {{#if feature_image}}
+          <a href="{{url}}" class="">
+            <img class="h-10 w-10 rounded-md object-cover lazy" data-src="{{img_url feature_image size="xs"}}">
+          </a>
+          {{else}}
+          <a href="{{url}}" class="">
+            <i class="h-10 w-10 fas fa-pen-fancy fa-2x"></i>
+          </a>
+          {{/if}}
 
-    <span class="site-footer__attribution--copyright">
-      &copy; {{date format="YYYY"}}
-      <a href="{{@site.url}}/">{{@site.title}}</a>
-    </span>&ensp;
+        </div>
 
-    <span class="site-footer__attribution--theme-author">
-      <a href="https://github.com/curiositry/undefined-ghost-theme">Undefined</a>
-      theme by
-      <a href="http://curiositry.github.io">Curiositry</a>
-    </span>&ensp;
+        <div class="info">
+          <h4 class="text-lg"><a href="{{url}}">{{title}}</a></h4>
+          <div class="meta text-foreground-dark-1">
+            <time class="text-sm" datetime="{{date format='YYYY-MM-DD'}}"><i
+                class="fas fa-calendar-alt inline-block mr-4"></i>{{date}}</time>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </article>
+      {{/foreach}}
+      {{/get}}
+    </div>
+    <div class="tag-cloud text-left mr-4">
+      <h3 class="text-3xl mb-4">{{t "Tags" }}</h3>
+      {{#get "tags" limit="10"}}
+      {{#foreach tags}}
+      <a href="{{url}}" class="button tag-{{slug}} m-2" data-id="tag-{{slug}}">{{name}}</a>
+      {{/foreach}}
+      {{/get}}
+    </div>
 
-    <span class="site-footer__attribution--ghost">
-      Proudly published with <a href="https://ghost.org">Ghost</a>
-    </span>
+    {{#if @site.secondary_navigation}}
+    <div class="footer-nav text-left">
+      <h3 class="text-3xl">{{t "Menu" }}</h3>
+      <nav class="site-footer__navigation" role="navigation">
+        {{navigation type="secondary"}}
+      </nav>
+    </div>
+    {{/if}}
+  </div>
 
-  </small>
+
+  <div class="site-footer__attribution grid grid-cols-1 lg:grid-cols-3 text-xs md:text-base mt-16">
+
+    <div>
+      <span class="site-footer__attribution--copyright">
+        &copy; {{date format="YYYY"}}
+        <a href="{{@site.url}}/">{{@site.title}}</a>
+      </span>&ensp;
+    </div>
+
+    <div>
+      <span class="site-footer__attribution--theme-author">
+        <a class="text-red" href="https://github.com/heraldofsolace/nightshroud-ghost-theme">Nightshroud</a>
+        theme by
+        <a class="text-red" href="https://abhattacharyea.dev">heraldofsolace</a>
+      </span>&ensp;
+    </div>
+    <div>
+      <span class="site-footer__attribution--ghost">
+        Proudly published with <a href="https://ghost.org">Ghost</a>
+      </span>
+    </div>
+  </div>
 
 </footer>

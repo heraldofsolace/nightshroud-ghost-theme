@@ -1,57 +1,90 @@
 {
-  "name": "undefined",
-  "description": "A minimal starter theme for the Ghost blogging platform",
-  "demo": "http://github.com/curiositry/undefined-ghost-theme",
-  "version": "2.6.1",
-  "engines": {
-      "ghost": ">=3.11.0",
-      "ghost-api": "v3"
-  },
-  "author": {
-      "name": "Curiositry",
-      "email": "isa@automathic.org",
-      "url": "http://curiositry.com"
-  },
-  "config": {
-      "posts_per_page": 5,
-      "image_sizes": {
+    "name": "nisha",
+    "description": "A minimal starter theme for the Ghost blogging platform",
+    "demo": "http://github.com/curiositry/undefined-ghost-theme",
+    "version": "2.6.1",
+    "engines": {
+        "ghost": ">=3.11.0",
+        "ghost-api": "v3"
+    },
+    "author": {
+        "name": "heraldofsolace",
+        "email": "aniketmail669@gmail.com",
+        "url": "https://abhattacharyea.dev"
+    },
+    "config": {
+        "posts_per_page": 5,
+        "image_sizes": {
             "xs": {
-                "width": 400
+                "width": 30
             },
             "s": {
-                "width": 600
+                "width": 100
             },
             "m": {
-                "width": 800
+                "width": 600
             },
             "l": {
                 "width": 1000
             },
             "xl": {
-                "width": 3000
+                "width": 2000
+            },
+            "loop": {
+                "width": 700,
+                "height": 500
+            },
+            "standard": {
+                "width": 760,
+                "height": 400
+            },
+            "fullcover": {
+                "width": 1500,
+                "height": 500
             }
         }
-  },
-  "gpm": {
-      "type": "theme",
-      "categories": [
-          "Minimal",
-          "Responsive",
-          "Starter theme",
-          "Boilerplate",
-          "Typographic"
-      ]
-  },
-  "keywords": [
-      "responsive",
-      "ghost",
-      "starter",
-      "theme",
-      "ghost-theme",
-      "boilerplate"
-  ],
-  "repository": {
-      "type": "git",
-      "url": "https://github.com/curiositry/undefined-ghost-theme.git"
-  }
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Responsive",
+            "Starter theme",
+            "Boilerplate",
+            "Typographic"
+        ]
+    },
+    "keywords": [
+        "responsive",
+        "ghost",
+        "starter",
+        "theme",
+        "ghost-theme",
+        "boilerplate"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/curiositry/undefined-ghost-theme.git"
+    },
+    "dependencies": {
+        "postcss-import": "^12.0.1",
+        "tailwindcss": "^1.6.1"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.3.0",
+        "@pangolinjs/postcss-preset-env": "^7.0.0",
+        "autoprefixer": "^9.8.6",
+        "cssnano": "^4.1.10",
+        "gscan": "^3.5.5",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-minify": "^3.1.0",
+        "gulp-postcss": "^8.0.0",
+        "gulp-sass": "^4.1.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "node-sass": "^4.14.1",
+        "postcss": "^7.0.32",
+        "postcss-cli": "^7.1.1",
+        "sass": "^1.26.10"
+    }
 }

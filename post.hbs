@@ -2,58 +2,187 @@
 
 {{>content-header}}
 
-<main class="container content" id="content">
+<main class="content" id="content">
 
   <article class="post {{post_class}}">
 
     {{#post}}
+    {{#if feature_image}}
+    <div class="post-teaser__wrapper w-60 md:w-160 lg:w-240 mx-auto lazy">
+      {{#if tags}}
+      <div class="post-teaser__tags-container text-xs md:text-lg my-4 w-full flex align-start text-foreground-dark-1">
+        <span class="post-teaser__meta__tags ">
+          <!-- #{{tags separator=", #"}} -->
+          <i class="fas fa-tags text-red-700 inline-block mx-2"></i>
+          <span class="post-teaser__tags font-bold">
+            {{tags limit="3" separator=", "}}
+          </span>
+        </span>
+      </div>
 
-      <header class="post__header">
-        <h1 class="post__title">{{title}}</h1>
+      {{/if}}
+      <div
+        class=" post-teaser__thumbnail relative w-60 h-45 md:w-160 md:h-120 lg:w-240 lg:h-120 overflow-hidden mx-auto rounded-tl-large rounded-br-large"
+        id=" {{url}}-post-thumbnail">
+        <a href="{{url}}">
+          <img class="post-teaser__image block opacity-50 md:opacity-1 transform transition-all duration-500 w-full h-full  scale-100  lazy"
+            data-src="{{img_url feature_image}}">
+          <div
+            class="post-teaser__text-container m-4 absolute bottom-0 left-0 bg-red p-4 rounded-large">
+            <header class="post-teaser__header text-sm md:text-3xl">
 
-        <div class="post__meta">
-          Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} on
-          <time class="post__date" datetime="{{date format='YYYY-MM-DD'}}">
-            {{date format="MMMM Do, YYYY"}}.
-          </time>
+              <h2 class="post-teaser__title">
+                {{#if featured}}
+                <i class="fas fa-star"></i>
+                {{/if}}
+                <a href="{{url}}">
+                  {{title}}
+                </a>
+              </h2>
+            </header>
 
-          {{#if tags}}
-            <span class="post__tags">
-              {{tags prefix="Tagged "}}
-            </span>
+
+          </div> <!-- end post-teaser__text-container -->
+
+          <div
+            class="comment-count-wrapper md:flex align-center justify-center absolute bottom-0 right-0 bg-red w-20 h-8 rounded-large m-4 hidden">
+            <a href="{{url}}#comments">
+              <i class="fas fa-comment m-2"></i><span class="disqus-comment-count my-1"
+                data-disqus-url="{{@site.url}}{{url}}" data-disqus-identifier="{{comment_id}}">0</span>
+
+            </a>
+          </div>
+        </a>
+      </div>
+
+
+    </div>
+
+    {{else}}
+    <div class="post-teaser__text-container w-60 mx-auto m-4 self-end">
+
+      <header class="post-teaser__header text-2xl md:text-5xl">
+
+        <h2 class="post-teaser__title text-center">
+          {{#if featured}}
+          <i class="fas fa-star text-red-700"></i>
           {{/if}}
-        </div>
+          <a href="{{url}}">
+            {{title}}
+          </a>
+        </h2>
       </header>
 
-      <section class="post__content">
-        {{#if access}}
-            {{content}}
-          {{else}}
-            <p>You don't have access to this post on <strong>{{@site.title}}</strong> at the moment, but if you upgrade your account you'll be able to see the whole thing, as well as all the other posts in the archive! Subscribing only takes a few seconds and will give you immediate access.</p>
 
-            <aside style="text-align: center;">
+    </div>
+    {{#if tags}}
+    <div class="post-teaser__tags-container text-xs md:text-md my-4 w-full md:w-160 mx-auto flex justify-center align-center text-foreground-dark-1">
+      <span class="post-teaser__meta__tags ">
+        <!-- #{{tags separator=", #"}} -->
+        <i class="fas fa-tags text-red-700 inline-block mx-2"></i>
+        <span class="post-teaser__tags font-bold">
+          {{tags limit="3" separator=", "}}
+        </span>
+      </span>
+    </div>
+    {{/if}}
+    <!-- end: .meta -->
+    {{/if}}
 
-            {{#if @member}}
-                <h2>This post is for paying subscribers only</h2>
-              {{else}}
-                <h2>This post is for subscribers only</h2>
-            {{/if}}
-            <a class="button large primary" href="/signup/">Subscribe now</a>
-            <p><small>Already have an account? <a href="/signin/">Sign in</a></small></p>
-            </aside>
+
+    <div class="post-teaser__meta text-title  w-full text-sm flex items-center justify-center">
+      <div class="post-teaser__meta-grid w-auto grid grid-cols-1 md:grid-cols-3 gap-1">
+        <div class="post-teaser__author-info p-1">
+          {{#primary_author}}
+          <a href="{{url}}">
+            <div class="flex w-full items-center justify-center">
+              <span
+                class="author-profile-image m-2 bg-cover bg-center md:border-red md:border-2 w-5 h-5 md:w-10 md:h-10 inline-block rounded-full lazy"
+                data-src="{{profile_image}}"></span>
+              <span class="font-bold text-sm md:text-lg">{{name}}</span>
+            </div>
+          </a>
+          {{/primary_author}}
+        </div>
+
+        <div class="md:p-1 text-xs md:text-sm flex items-center justify-center text-foreground-dark-1">
+          <i class="fas fa-calendar-alt text-red-700 m-2"></i>
+          <time class="post-teaser__meta__date" datetime="{{date format='YYYY-MM-DD'}}">
+            {{date format="MMMM Do, YYYY"}}.
+          </time>
+        </div>
+
+        <div class="md:p-1 text-xs md:text-sm flex items-center justify-center text-foreground-dark-1">
+          <i class="fas fa-clock text-red-700 m-2"></i>
+          <span>{{reading_time}}</span>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <section class="post__content p-0 md:p-10">
+      {{#if access}}
+      <div class="post__content-wrapper text-left w-72 md:w-160 lg:w-240 text-sm md:text-md lg:text-lg mx-auto">
+        <div class="post__content-text w-full mx-auto leading-relaxed">{{content}}</div>
+
+      </div>
+      {{else}}
+      <p class="w-160 mx-auto my-4">You don't have access to this post on <strong>{{@site.title}}</strong> at the
+        moment, but if you upgrade your
+        account you'll be able to see the whole thing, as well as all the other posts in the archive! Subscribing only
+        takes a few seconds and will give you immediate access.</p>
+
+      <aside class="text-center;">
+
+        {{#if @member}}
+        <h2>This post is for paying subscribers only</h2>
+        {{else}}
+        <h2>This post is for subscribers only</h2>
         {{/if}}
+        <a class="button mt-4 large primary" href="/signup/">Subscribe now</a>
+        <p><small>Already have an account? <a href="/signin/">Sign in</a></small></p>
+      </aside>
+      {{/if}}
 
-      </section>
+      <div id="comments" class="w-60 md:w-160 lg:w-240 mx-auto">
+        <h1 class="text-3xl my-4">{{t "Comments" }}</h3>
+          <div id="disqus_thread"></div>
+      </div>
 
-      <hr>
+      <script>
+       
+        var disqus_shortname = theme_config.disqus_shortname; // required: replace example with your forum shortname
+        var disqus_config = function () {
+          this.page.url = '{{@site.url}}{{url}}';  // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = '{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
 
-      <footer class="post__footer">
+        (function () {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+          powered by Disqus.</a></noscript>
+
+    </section>
+
+    <hr>
+
+    <footer class="post__footer">
+      {{> author-info}}
 
       {{> subscribe-widget}}
 
-      {{> author-info}}
 
-      </footer>
+
+    </footer>
 
 
     {{/post}}

@@ -3,70 +3,57 @@
 {{> content-header}}
 
 {{#author}}
-  <section class="author-profile container">
+<section class="author-info w-60 md:w-160 text-left p-1 md:p-4 mx-auto">
 
+  <div class="author-info__wrapper flex flex-col md:flex-row">
     {{#if profile_image}}
-      <img class="author-profile__image" src="{{profile_image}}" alt="{{name}}’s profile image" />
+    <div class="author-info__avatar p-4 m-4">
+      <img class="author-info__image w-24 h-24 border-red-500 border-2 rounded-full mx-auto lazy" data-src="{{profile_image}}"
+        alt="{{name}}’s Profile Image" />
+    </div>
+
     {{/if}}
-
-    <h1 class="author-profile__name">{{name}}</h1>
-
-    {{#if bio}}
-      <p class="author-profile__bio">{{bio}}</p>
-      {{else}}
-      <p class="author-profile__bio">
-        To let their work speak for itself, {{name}} has not written a bio.
-      </p>
-    {{/if}}
-    <div class="author-profile__meta">
-
-      {{#if location}}
-        <span class="author-info__location inline-block">
-          Location: <strong>{{location}}</strong>
+    <div class="author-info__info-wrapper">
+      <div class="flex md:flex-row flex-col">
+        <h4 class="author-info__name text-2xl inline-block">
+          <a href="{{url}}">{{name}}</a>
+        </h4>
+        <span class=" hidden md:inline-flex md:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
+        <span class="text-foreground-dark-1 md:inline-flex md:items-center">{{location}}</span>
+        <span class=" hidden md:inline-flex md:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
+        <span
+          class="text-foreground-dark-1 md:inline-flex md:items-center">{{plural ../pagination.total empty=(t "0  Articles") singular=(t "1 Article") plural=(t "% Articles")}}</span>
+        <span class="links mx-4 md:inline-flex md:items-center">
+          {{#if twitter}}
+          <a href="{{twitter}}" class="mx-2 hover:text-red-700">
+            <i class="fab fa-twitter"></i>
+          </a>
+          {{/if}}
+          {{#if facebook}}
+          <a href="{{facebook}}" class="mx-2 hover:text-red-700">
+            <i class="fab fa-facebook"></i>
+          </a>
+          {{/if}}
+          {{#if website}}
+          <a href="{{website}}" class="mx-2 hover:text-red-700">
+            <i class="fas fa-globe"></i>
+          </a>
+          {{/if}}
         </span>
-        &ensp;
+      </div>
+
+      {{#if bio}}
+      <p class="author-info__bio mb0 mt-4">{{bio}}</p>
       {{/if}}
 
-      {{#if website}}
-        <span class="author-info__website inline-block">
-          Website: <a href="{{website}}"><strong>{{website}}</strong></a>
-        </span>
-        &ensp;
-      {{/if}}
+    </div>
 
-      <span class="author-info__rss  inline-block">
-        <a href="{{url}}rss">
-          <strong>RSS feed</strong>
-        </a> of posts by {{name}}&ensp;
-      </span>
-      &ensp;
+  </div>
 
-      {{#if twitter}}
-        <span class="author-info__twitter inline-block">
-          Twitter handle: <a href="{{twitter_url}}"><strong>{{name}}</strong></a>
-        </span>
-        &ensp;
-      {{/if}}
+  </span> {{! end author meta }}
+</section> {{! end author info }}
 
-      {{#if facebook}}
-        <span class="author-info__facebook inline-block">
-          Facebook page: <a href="{{facebook_url}}"><strong>{{facebook_url}}</strong></a>
-        </span>
-        &ensp;
-      {{/if}}
 
-      <br><br>
-
-      <span class="author-profile__stats inline-block">
-        {{name}}
-        {{plural ../pagination.total empty='hasn’t published any posts yet.' singular='has published <strong>% post</strong>:' plural='has published <strong>% posts</strong>:'}}
-      </span>
-
-      <br><br>
-
-    </div> {{! end author meta }}
-
-  </section>
 {{/author}}
 
 {{! The main content area on the homepage }}

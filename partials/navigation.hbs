@@ -1,0 +1,62 @@
+<div class="nav-wrapper">
+
+    {{#if isSecondary}}
+    <ul class="nav flex flex-col">
+        {{#foreach navigation}}
+        <li class="nav-{{slug}}  text-sm md:text-base transition-all duration-500 text-foreground-dark-1 hover:text-foreground my-2">
+            <a href="{{url absolute="true"}}">{{label}}</a>
+        </li>
+        {{/foreach}}
+    </ul>
+    {{else}}
+    <div class="nav flex flex-col lg:flex-row items-center text-sm  nav-primary justify-between flex-wrap">
+        <div class="block lg:hidden">
+            <button
+            id="menubtn"
+                class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+        <ul id="menulist" class="w-full lg:flex-grow lg:flex lg:items-center lg:w-auto transition-all duration-800 active">
+        <!-- Loop through the navigation items -->
+        {{#foreach navigation}}
+        <li class="nav-{{slug}} block mt-4 lg:inline-block lg:mt-0 {{#if current}}nav-current{{/if}} transition-all duration-500 hover:text-red mx-8">
+            <a class="link" href="{{url absolute="true"}}">{{label}}</a>
+        </li>
+        {{!-- <i class="fas fa-circle text-xs text-red-700 block h-auto last:hidden"></i> --}}
+        {{/foreach}}
+
+        {{#if @labs.members}}
+        {{#if @member}}
+
+        <li class="nav-account block mt-4 lg:inline-block lg:mt-0 {{#if current}}nav-current{{/if}} transition-all duration-500 hover:text-red mx-4">
+            <a class="link" href="{{@site.url}}/account">Account</a>
+        </li>
+        <li class="nav-signout block mt-4 lg:inline-block lg:mt-0 mx-4">
+            <button role="link" class="button" data-members-signout>Sign out</button>
+        </li>
+
+        {{else}}
+
+        <li class="block mt-4 lg:inline-block lg:mt-0 {{#if current}} nav-current {{/if}} transition-all duration-500 hover:text-red mx-4 ">
+            <a class="link" href="{{@site.url}}/signin">Log in</a>
+
+        </li>
+        {{!-- <i class="fas fa-circle text-xs text-red-700 block h-auto"></i> --}}
+        <li class="block mt-4 lg:inline-block lg:mt-0 {{#if current}} nav-current {{/if}} transition-all duration-500 hover:text-red mx-4">
+            <a class="link" href="{{@site.url}}/signup">Subscribe</a>
+        </li>
+
+        {{/if}}
+        {{/if}}
+
+
+        <!-- End the loop -->
+    </ul>
+    </div>
+    
+    {{/if}}
+</div>

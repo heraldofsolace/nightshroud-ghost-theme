@@ -1,0 +1,18 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import "aos.scss";
+@import "settings/variables";
+@import "base/style";
+@import "objects/post_teaser";
+@import "objects/navigation";
+@import "objects/article";
+@import "objects/members";
+@import "objects/notification";
+
+
+@import "prism.scss";
+@import "tooltipster.scss";

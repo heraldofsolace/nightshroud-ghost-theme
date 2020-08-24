@@ -1,0 +1,10 @@
+.nav-primary .nav-current {
+    color: $red;
+}
+
+#menulist {
+    display: none;
+    &.active {
+        display: block;
+    }
+}

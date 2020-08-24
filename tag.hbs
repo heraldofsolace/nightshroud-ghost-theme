@@ -1,30 +1,44 @@
 {{!< default}}
 
 {{> content-header}}
-<section class="tag-info container">
+<section class="tag-info w-60 md:w-160 text-left p-4 my-4 mx-auto">
+  {{#tag}}
+  <div class="tag-info__wrapper flex flex-col md:flex-row justify-center">
+    <div class="tag-info__avatar p-4 m-4 flex">
+      <div class="m-4">
+        {{#if feature_image}}
 
-  {{#if tag.feature_image}}
-    <img class="tag-info__image" src="{{tag.feature_image}}" alt="Image for {{tag.name}} tag" />
-  {{/if}}
+        <img class="tag-info__image w-24 h-24 border-red-500 border-2 rounded-full lazy" data-src="{{feature_image}}"
+          alt="Image for {{name}}" />
+        {{else}}
+        <span class=""><i class="fas fa-tags block fa-2x"></i></span>
+        {{/if}}
+      </div>
 
-  <br><br>
+      <div class="flex flex-col">
+        <h4 class="tag-info__name text-2xl inline-block">
+          {{name}}
+        </h4>
 
-  <span class="tag-info__intro">Posts Tagged:</span>
-  <h1 class="tag-info__name">{{tag.name}}</h1>
+        {{plural ../pagination.total empty=(t "0  Articles") singular=(t "1 Article") plural=(t "% Articles")}}
+      </div>
 
-  <p class="tag-info__description">
-    {{tag.description}} Subscribe to this  tag’s <a href="{{@site.url}}/tag/{{tag.slug}}/rss/">RSS feed</a> to get new {{tag.name}} posts as they’re written.
-  </p>
+    </div>
 
-  <span class="tag-info__meta">
-    {{plural pagination.total empty='There are no articles with this tag … how did you find it?!' singular='A <strong>% post</strong> collection:' plural='A <strong>% post</strong> collection:'}}
-     </span>
-  </span>
 
-  <br><br>
+    {{#if description}}
+    <div class="tag-info__info-wrapper">
+      <p class="tag-info__bio mb0 mt-4">{{description}}</p>
+    </div>
+    {{/if}}
+  </div>
 
-</section>
+
+
+  {{/tag}}
+</section> {{! end author info }}
+
 
 <main class="content">
-    {{> "loop"}}
+  {{> "loop"}}
 </main>

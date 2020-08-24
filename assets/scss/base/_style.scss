@@ -1,0 +1,59 @@
+body {
+    background-color: $background;
+    color: $foreground;
+    font-family: $font;
+    font-size: $font-size;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $title-font;
+    font-weight: $title-font-weight;
+}
+
+
+.text-title {
+    font-family: $title-font;
+}
+
+.button {
+    display: inline-block;
+    padding: 5px 25px;
+    border-radius: 20px;
+    background-color: $red;
+    text-align: center;
+    transition: all 0.8s;
+    &:hover {
+        background-color: darken($red, 5%);
+    }
+
+    &-ghost {
+        background-color: transparent;
+        border-width: 2px;
+        border-color: $red;
+    }
+    // box-shadow: 0 0 10px #222224;
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+    background: $red;
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
+    color: $foreground;
+    padding: 8px;
+}
+a.content-link {
+    color: $red;
+    text-decoration: underline;
+
+    &:hover {
+        color: $foreground;
+    }
+}
