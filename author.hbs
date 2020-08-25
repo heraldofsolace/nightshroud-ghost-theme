@@ -3,7 +3,7 @@
 {{> content-header}}
 
 {{#author}}
-<section class="author-info w-60 md:w-160 text-left p-1 md:p-4 mx-auto">
+<section class="author-info w-60 sm:w-120 md:w-160 text-left p-1 md:p-4 mx-auto">
 
   <div class="author-info__wrapper flex flex-col md:flex-row">
     {{#if profile_image}}
@@ -14,16 +14,16 @@
 
     {{/if}}
     <div class="author-info__info-wrapper">
-      <div class="flex md:flex-row flex-col">
+      <div class="flex sm:flex-row flex-col">
         <h4 class="author-info__name text-2xl inline-block">
           <a href="{{url}}">{{name}}</a>
         </h4>
-        <span class=" hidden md:inline-flex md:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
-        <span class="text-foreground-dark-1 md:inline-flex md:items-center">{{location}}</span>
-        <span class=" hidden md:inline-flex md:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
+        <span class=" hidden sm:inline-flex sm:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
+        <span class="text-foreground-dark-1 sm:inline-flex sm:items-center">{{location}}</span>
+        <span class=" hidden sm:inline-flex sm:items-center"><i class="fas fa-circle text-red-700 text-xs mx-4"></i></span>
         <span
-          class="text-foreground-dark-1 md:inline-flex md:items-center">{{plural ../pagination.total empty=(t "0  Articles") singular=(t "1 Article") plural=(t "% Articles")}}</span>
-        <span class="links mx-4 md:inline-flex md:items-center">
+          class="text-foreground-dark-1 sm:inline-flex sm:items-center">{{plural ../pagination.total empty=(t "0  Articles") singular=(t "1 Article") plural=(t "% Articles")}}</span>
+        <span class="links mx-4 sm:inline-flex sm:items-center">
           {{#if twitter}}
           <a href="{{twitter}}" class="mx-2 hover:text-red-700">
             <i class="fab fa-twitter"></i>
