@@ -2,7 +2,7 @@
     "name": "nightshroud",
     "description": "A minimal dark theme for the Ghost blogging platform",
     "demo": "https://abblog.xyz",
-    "version": "2.0",
+    "version": "2.1.0",
     "engines": {
         "ghost": ">=3.11.0",
         "ghost-api": "v3"
