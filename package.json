@@ -1,8 +1,8 @@
 {
-    "name": "nisha",
-    "description": "A minimal starter theme for the Ghost blogging platform",
-    "demo": "http://github.com/curiositry/undefined-ghost-theme",
-    "version": "2.6.1",
+    "name": "nightshroud",
+    "description": "A minimal dark theme for the Ghost blogging platform",
+    "demo": "https://abblog.xyz",
+    "version": "2.0",
     "engines": {
         "ghost": ">=3.11.0",
         "ghost-api": "v3"
@@ -49,22 +49,22 @@
         "categories": [
             "Minimal",
             "Responsive",
-            "Starter theme",
-            "Boilerplate",
+            "Beautiful",
+            "Dark",
             "Typographic"
         ]
     },
     "keywords": [
         "responsive",
-        "ghost",
-        "starter",
+        "ghost",,
         "theme",
         "ghost-theme",
-        "boilerplate"
+        "minimal"
+       
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/curiositry/undefined-ghost-theme.git"
+        "url": "https://github.com/heraldofsolace/nightshroud-ghost-theme.git"
     },
     "dependencies": {
         "postcss-import": "^12.0.1",
